@@ -1,0 +1,110 @@
+#include<iostream>
+using namespace std;
+struct node{
+    int data;
+    node* next;
+};
+node* head=NULL;
+void insertnode(int value);
+void display();
+void deletenode(int value);
+void insertbeg(int value);
+void delete_beg();
+void delete_end();
+
+int main(){
+    insertnode(20);
+        insertnode(30);
+    insertnode(40);
+    insertnode(50);
+display();
+deletenode(40);
+display();
+insertbeg(10);
+display();
+delete_beg();
+
+    display();
+delete_end();
+    display();
+
+}
+void insertnode(int value){
+    node* new_node,* last;
+    new_node=new node;
+    new_node->data=value;
+    if(head==NULL){
+        head=new_node;
+        new_node->next=NULL;
+    }
+    else{
+        last=head;
+        while(last->next!=NULL){
+            last=last->next;
+        }
+        last->next=new_node;
+        new_node->next=NULL;
+    }
+}
+void display(){
+    node* currentnode;
+    if(head==NULL){
+        cout <<"linked list is empty .";
+    }
+    else{
+        currentnode=head;
+        while(currentnode!=NULL){
+            cout<<currentnode->data<<"\t";
+            currentnode=currentnode->next;
+        }
+        cout<<endl;
+    }
+}
+void deletenode(int value){
+    node* current,* previoce;
+    current=head;
+    previoce=head;
+    if(current->data==value){
+        head=current->next;
+        free(current);
+        return;
+    }
+    while(current->data!=value){
+        previoce=current;
+        current=current->next;}
+        previoce->next=current->next;
+        free(current);
+    }
+void insertbeg(int value){
+    node* new_node=new node;
+    new_node->data=value;
+    new_node->next=head;
+    head=new_node;
+}
+void delete_beg(){
+    if(head==NULL){
+        cout<<"the linked listb is empty .";
+    }
+    else{
+        node* firstnode=head;
+        head=firstnode->next;
+        delete(firstnode);
+    }
+}
+void delete_end(){
+      if(head==NULL){
+        cout<<"the linked listb is empty .";
+    }
+    else if(head->next==NULL){
+        delete(head);
+        head=NULL;
+    }
+    else{
+        node* ptr=head;
+        while(ptr->next->next!=NULL){
+            ptr=ptr->next;
+        }
+        delete(ptr->next);
+        ptr->next=NULL;
+    }
+}
