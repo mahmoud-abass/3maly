@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+int main() {
+double mainMemoryAccessTime = 100 * 1e-9; // 100 nanoseconds
+double secondaryMemoryAccessTime = 25 * 1e-3; // 25 milliseconds
+double cpuMainMemoryTime = 30; // seconds
+double diskToMainMemoryRatio = secondaryMemoryAccessTime /
+mainMemoryAccessTime;
+double cpuSecondaryMemoryTime = cpuMainMemoryTime *
+diskToMainMemoryRatio;
+cout << "diskToMainMemoryRatio: " << diskToMainMemoryRatio << endl;
+cout << "cpuSecondaryMemoryTime: " << cpuSecondaryMemoryTime << "
+seconds" << endl;
+return 0;
