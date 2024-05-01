@@ -63,4 +63,34 @@ int main() {
     return 0;
 }
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+write
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+    // Open the file in output mode
+    ofstream file("example.txt");
+    
+    // Check if the file is opened successfully
+    if (!file.is_open()) {
+        cerr << "Error opening the file." << endl;
+        return 1;
+    }
+
+    // Write the initial text to the file
+    file << "Welcome-----File organization -----" <<endl;
+
+    // Move the cursor 8 steps from the beginning and write "to"
+    file.seekp(8);
+    file << "to";
+
+    // Move the cursor 3 steps back from the end and write "course"
+    file.seekp(-3, std::ios::end);
+    file << "course";
+
+    // Close the file
+    file.close();
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>....
 
