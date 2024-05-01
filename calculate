@@ -1,0 +1,20 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+int main() {
+// Open the file
+ifstream file("Example.txt", ios::binary);
+// Check if the file is opened successfully
+if (!file.is_open()) {
+cerr << "Error opening the file." << endl;
+return 1;
+}
+// Move the file pointer to the end of the file
+file.seekg(0,ios::end);
+// Get the file size
+streampos fileSize = file.tellg();
+// Close the file
+file.close();
+// Display the file size
+cout << "File size of Example.txt: " << fileSize << " bytes" <<endl;
+return 0;}
